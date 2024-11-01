@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "supply chain analytics"
+version = "0.1.0"
+description = ""
+authors = ["Albin Lindqvist <albin.lindqvist@hotmail.se>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ipykernel = "^6.29.5"
+numpy = "^2.1.2"
+pandas = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
