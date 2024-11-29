@@ -162,6 +162,67 @@ of two simplifying assumptions. The first is that we *do* incur a holding
 cost even if we have a stockout. The second one is that we only get charged
 a stockout cost for the first period a unit is missing.
 
+Stockouts cannot occur outside of the lead time, since we will definitely
+put in an order once IL reaches 0/$r$.
+
+Solving it exactly is difficult, since there is no closed form solution.
+Thus we rely on an iterative heuristic method. First we set Q to be the 
+EOQ optimal level, using that Q we then calculate the reorder point $r$.
+We then use that $r$ to calculate the reorder quantity $Q$ again, until we
+converge. (It may also be a good idea to use the EOQB as the starting point)
+
+## Week 4
+We are now looking at multi-echelon systems. That is, we have multiple stages
+that we need to have a policy for. Before we only had one stage we had to make
+decisions for. Each stage has a certain lead time between putting in an order
+and receiving the order. Even though the transportation time is deterministic,
+the lead time could be stochastic. This is due to the fact that the supplier,
+i.e. the stage before may not have enough stock to fulfill the order, and thus
+the lead time is changed.
+
+### Local vs. Echelon
+There are different ways of looking at the costs, inventory levels, etc. We
+can either look at the local cost of a stage, or the echelon cost. The echelon
+cost is the cost of the entire system up until and including the stage we are
+looking at. The local cost is only the cost of the stage we are looking at.
+Also *note* that echelon included the items that are in transit.
+> [!NOTE]
+> Local costs are denoted with an apostrophe, e.g. $h'$, $p'$, etc.
+> Echelon costs are denoted without an apostrophe, e.g. $h$, $p$, etc.
+> For holding costs the echelon costs are the changes in holding costs,
+> while the local costs are the total holding costs of all the below stages.
+
+### Types of Systems
+There are multiple ways that a system can be represented/modeled as depending,
+on how the process looks.
+* Serial systems are systems where everything is sequential.
+* Assembly systems are systems where we have multiple suppliers for a single
+  stage.
+* Distribution systems are systems where we have multiple customers for a
+  single stage.
+* Tree systems are systems where we have multiple suppliers and customers
+  for a single stage.
+
+An assembly system can be solve by using the same method as for a serial system
+since we can simply convert the assembly system to a serial system. It has been
+proven that the optimal policy for a serial system is also the optimal policy
+for the corresponding assembly system.
+
+### Stochastic-Service Model for Serial Systems
+A serial system is a system where we have multiple stages, all being in a
+sequential order (S1 is before S2, S2 is before S3, etc.). The first stage
+faces some external demand, and the last stage has a supplier with infinite
+stock. The lead time, in the absences of a stockout, is deterministic $L_i$.
+
+The system can be solved, exactly, by using a recursive formula, by first
+finding the optimal policy for the first stage, and then the second, and so on.
+
+However the exact solution is very cumbersome to solve, instead a strong
+heuristic (Shang & Song) is used. The heuristic is basically using the
+mean of two solutions to the Newsvendor problem. 
+
+
+
 
 
 
