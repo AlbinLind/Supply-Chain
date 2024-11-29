@@ -117,7 +117,8 @@ have to throw it away (or salvage for a lower price). If we have to little
 in stock, we will lose the sales. We can only order _before_ the demand is
 observed.
 
-> [!NOTE] There are multiple ways to denoted the costs
+> [!NOTE]
+> There are multiple ways to denoted the costs
 > * $h$ - holding cost, may also be denoted as $c_o$ meaning overage cost
 > * $p$ - penalty/stockout cost, may also be denoted as $c_u$ meaning underage cost
 
