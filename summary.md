@@ -102,9 +102,64 @@ expected demand.
 #### Demand Process
 The demand may differ in how it is modeled. We may have continuous demand or
 discrete demand. The difference is the type of distribution.
+Even if we are using a continuous demand that can take on negative values, we
+can still reasonable assume that the demand is non-negative. Especially if
+we are looking at the normal distribution and $\mu > 4\sigma$ for example.
 
+### Periodic-Review
+We have a T-period horizon that we plan for. We have a base-stock level $s$,
+and then place orders so that we reach level $S$, when we have $s$ or less
+in stock. The order size is $S - IL$.
 
+#### Newsvendor Model - Single Period
+The product is perishable, that is if we have too much in stock, we will
+have to throw it away (or salvage for a lower price). If we have to little
+in stock, we will lose the sales. We can only order _before_ the demand is
+observed.
 
+> [!NOTE] There are multiple ways to denoted the costs
+> * $h$ - holding cost, may also be denoted as $c_o$ meaning overage cost
+> * $p$ - penalty/stockout cost, may also be denoted as $c_u$ meaning underage cost
+
+*type-1 service level* - $P(D \leq S)$, that is the probability that the demand
+is less than or equal to our base-stock level. This means that the service level
+of type-1 is the critical ratio ($\frac{p}{p+h}$). And for non-optimal solutions
+it is the CDF until that point.
+
+#### Finite Horizon - $T < \infty$
+If we have a finite horizon, we can use a similar approach as we did for
+the deterministic demand, where we used the W-W model (DP-programming).
+
+We basically make inventory decisions for each period assuming that
+the optimal decisions has been made for the previous periods. We use
+an order up to level, instead of an order level as we did in the 
+deterministic demand model.
+
+While evaluating the model, we need to consider different scenarios
+for where our stock level could be at each of the periods. If we have a
+continuous demand, this can become problematic, or if we have a large range
+for a discrete demand distribution. We can solve this by truncating the range
+of possible stock levels. However, this may lead to suboptimal solutions, which
+we may accept, since we are looking at a stochastic model, so we already have
+some uncertainty.
+
+The solution basically reduces to a base-stock policy.
+
+For fixed costs (associated with making an order), the policy changes a bit.
+We get a non-continuous base-stock policy. That is, it is often more profitable
+to make bigger orders, once we have a low enough stock level (which is below)
+the base-stock level.
+
+##### Lead Time
+If we have some lead time, we may simply change the demand to be the lead time
+demand. That is we multiply the demand by the lead time.
+
+### Continuous-Review
+We have a continuous-review model, where we have a reorder point $r$ and a
+reorder quantity $Q$. We order $Q$ whenever the IL reaches $r$. We make use
+of two simplifying assumptions. The first is that we *do* incur a holding
+cost even if we have a stockout. The second one is that we only get charged
+a stockout cost for the first period a unit is missing.
 
 
 
