@@ -221,7 +221,19 @@ However the exact solution is very cumbersome to solve, instead a strong
 heuristic (Shang & Song) is used. The heuristic is basically using the
 mean of two solutions to the Newsvendor problem. 
 
-
+## Week 5
+We are now looking at systems where we have multiple different types of end 
+products. They may have different demands, and they might be distributed from
+multiple different warehourses. The idea for this week is to explore how we can
+improve the system by using a centralized system. By using a centralized system
+we can reduce the variance of the demand, since we are able to pool the demands,
+and thus we might be able to reduce costs, by reducing the overall safety stock.
+This is called the _Risk-Pooling Effect_ -- we meet the same service level with
+less safety stock (and therefore, hopefully, less overall costs). The reason
+this works is because as long as the demands are not greatly positively
+correlated the demands will most likely cancel each other out, and you can
+therefore use the excess stock from one product to fulfill the demand of
+another.
 
 
 
