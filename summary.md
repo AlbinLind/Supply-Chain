@@ -263,6 +263,8 @@ to postponement).
   * This is often by having a certain level of stock, and then producing
     more when the stock level falls below a certain level.
 
-
+### Supply Uncertainty
+So far we have only looked at demand uncertainty, but often there is some
+uncertainty in the supply as well.
 
 
