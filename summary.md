@@ -221,8 +221,50 @@ However the exact solution is very cumbersome to solve, instead a strong
 heuristic (Shang & Song) is used. The heuristic is basically using the
 mean of two solutions to the Newsvendor problem. 
 
+## Week 5
+### Risk-Pooling
+Risk pooling is in essence the idea that we can reduce the total variance,
+by pooling the demands (of multiple products or distribution centrals).
 
+#### Centralized vs. Decentralized
+We are now looking at a model where we have one product. They may have
+different demands, and they might be distributed from multiple different
+warehourses. The idea for this week is to explore how we can
+improve the system by using a centralized system. By using a centralized system
+we can reduce the variance of the demand, since we are able to pool the demands,
+and thus we might be able to reduce costs, by reducing the overall safety stock.
+This is called the _Risk-Pooling Effect_ -- we meet the same service level with
+less safety stock (and therefore, hopefully, less overall costs). The reason
+this works is because as long as the demands are not greatly positively
+correlated the demands will most likely cancel each other out, and you can
+therefore use the excess stock from one product to fulfill the demand of
+another. As a matter of fact, having a negative correlation is good and will
+most likely lead to a lower overall (holding)cost. However, it is important to
+consider the costs of having a centralized system, such as increased
+transportation costs.
 
+#### Postponement
+Another way to reduce variance is if we have multiple end products that have
+different demands, but are using mostly the same components. By postponing
+the final assembly, we might be able to reduce the variance of the demands.
 
+#### Terms
+* _Make-to-order_ - We only produce when an order has been placed. This method
+takes a long time for order to customer, but there is likely lower holding
+costs.
+* _Make-to-stock_ - We produce before the order has been placed. This method
+has a shorter lead time, but higher holding costs.
+* _Assemble-to-order_ - We produce the components before the order has been
+placed, and then assemble the product when the order has been placed (similar
+to postponement).
+* _Pull system_ - It initialises the production when the demand is observed.
+  * This is often by limiting the WIP (Work In Progress) to a certain level.
+* _Push system_ - It produces the product before the demand is observed.
+  * This is often by having a certain level of stock, and then producing
+    more when the stock level falls below a certain level.
+
+### Supply Uncertainty
+So far we have only looked at demand uncertainty, but often there is some
+uncertainty in the supply as well.
 
 
